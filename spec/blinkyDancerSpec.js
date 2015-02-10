@@ -6,7 +6,8 @@ describe("blinkyDancer", function() {
 
   beforeEach(function() {
     clock = sinon.useFakeTimers();
-    blinkyDancer = makeBlinkyDancer(10, 20, timeBetweenSteps);
+    //updated by adding 'new' - did nothing else -- moving us to 'pseudoclassical'
+    blinkyDancer = new BlinkyDancer(10, 20, timeBetweenSteps);
   });
 
   it("should have a jQuery $node object", function(){
