@@ -34,15 +34,9 @@ Dancer.prototype.setPosition = function(top, left){
 console.log("testing")
 //put these into prototype, add 'this'
 Dancer.prototype.step = function(){
-  // the basic dancer doesn't do anything interesting at all on each step,
-  // it just schedules the next step
 
-  //TEST
   this.setPosition($("body").height() * Math.random(), $("body").width() * Math.random());
 
-
-  console.log("This is this." , this);
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
-  console.log('step has completed');
 
 };
