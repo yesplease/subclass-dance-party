@@ -13,7 +13,7 @@ BabyDancer.prototype.step = function(){
 
 
 BlinkyDancer.prototype.step.call(this);
-this.$node.fadeToggle();
+  this.$node.fadeToggle();
 //   //if you want to easily add any functionality to the regular stepping interval,
 //   //you need to explicitly call a .step method, either BlinkyDancer.prototype.step.call(this);
 //   //or Dancer.prototype.step.call(this);
