@@ -41,12 +41,10 @@ $(document).on("click", ".dancer", function(event){
     //console.log(window.dancers[i].$node.position());
 
   }
-  console.log(shortestIndex);
+  // console.log(shortestIndex);
   var dancingPartnerPosition = window.dancers[shortestIndex].$node.position();
   $(event.currentTarget).animate({"top": ""+dancingPartnerPosition.top, "left": ""+dancingPartnerPosition.left}, "slow");
-  window.dancers[shortestIndex].$node.animate({"top": ""+clickedCoordinates.top, "left": ""+clickedCoordinates.left}, "slow")
-
-
+  window.dancers[shortestIndex].$node.animate({"top": ""+clickedCoordinates.top, "left": ""+clickedCoordinates.left}, "slow");
 
 
 });
@@ -54,32 +52,45 @@ $(document).on("click", ".dancer", function(event){
 
 
 //ELEMENT EVENT HANDLERS
-  /*
-  $(document).on("mouseover", ".grandpa", function(event){
-    $(event.currentTarget).removeClass("infinite flip");
-    $(event.currentTarget).addClass("infinite wobble");
 
+  $(document).on("mouseover", ".grandpa", function(event){
+    $(event.currentTarget).toggleClass("infinite flip");
   });
 
   $(document).on("mouseover", ".beyonce", function(event){
-    $(event.currentTarget).removeClass("infinite bounce");
-    $(event.currentTarget).addClass("hinge");
+    $(event.currentTarget).removeClass("rollIn");
+    $(event.currentTarget).toggleClass("infinite pulse");
 
   });
-*/
-  /*$(document).on("mouseover", ".baby", function(event){
+
+  $(document).on("mouseover", ".baby", function(event){
     //console.log("click works!")
     $(event.currentTarget).removeClass("bounceInDown");
     $(event.currentTarget).addClass("lightSpeedOut");
-  });*/
+  });
 
 
 //BUTTON EVENT HANDLERS
+
+
+  $(".clearTheFloor").on("click", function(event){
+    $("body").children(".dancer").removeClass('infinite flip');
+    $("body").children(".dancer").addClass("rollOut");
+    window.dancers = [];
+
+    setTimeout(function(){
+      $("body").children(".dancer").remove();
+
+    }, 1000);
+
+  });
+
   $(".lineUpDancers").on("click", function(event){
     //iterate over window.dancers array
     for ( var i = 0; i < window.dancers.length; i++ ){
       dancers[i].top = $("body").height() / 2;
-      dancers[i].setPosition(window.dancers[i].top, window.dancers[i].left);
+      dancers[i].$node.animate({"top":""+dancers[i].top}, "slow");
+      //dancers[i].setPosition(window.dancers[i].top, window.dancers[i].left);
     }
       //for each dancer object, set the position to a set x or y position.
       //window.dancers[0]

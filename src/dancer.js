@@ -28,7 +28,6 @@ Dancer.prototype.setPosition = function(top, left){
     top: top,
     left: left
   };
-  console.log("setting position on this.$node: ", this.$node);
   this.$node.css(styleSettings);
 
 };

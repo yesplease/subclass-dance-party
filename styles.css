@@ -5,13 +5,26 @@ body{
   margin: 0px;
   background-color:#444;
   font-size: 18px;
-  background-image: url("http://championdjspromotion.com/wp-content/uploads/2013/05/dance-floor-11.jpg");
+  background-image: url("http://i.vimeocdn.com/video/460516322_1280x720.jpg");
   background-size: cover;
   background-color: #cccccc;
 }
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: white;
+  border: 1px solid white;
+  border-radius: 6px;
+  background-color: #CD0074;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: arial;
 
+
+
+}
+
+.clearTheFloor, .lineUpDancers {
+  padding: 5px 12px;
+  float: left;
 }
 .title, .addDancerButton{
   padding:5px 12px;
