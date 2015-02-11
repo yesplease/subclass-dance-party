@@ -1,6 +1,8 @@
 var GrandpaDancer = function(top, left, timeBetweenSteps){
+  this.$node = $('<span class = "grandpa dancer animated infinite flip"><img src = "http://media.giphy.com/media/63BVu4M5jZZi8/giphy.gif" loop = infinite></img></span>');
   Dancer.call(this, top, left, timeBetweenSteps);
-  console.log('BlinkDancer is ', this);
+  //this.$node = $('<span class = "dancer"><img src = "http://media.giphy.com/media/63BVu4M5jZZi8/giphy.gif" loop = infinite></img></span>')
+  // this.setPosition(top, left);
 };
 
 GrandpaDancer.prototype = Object.create(Dancer.prototype);

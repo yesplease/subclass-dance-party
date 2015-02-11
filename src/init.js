@@ -1,6 +1,91 @@
 $(document).ready(function(){
   window.dancers = [];
 
+//ELEMENT CLICK HANDLER
+
+//find element that was clicked
+//find its coodinates
+//track closest element as a variable
+//for ever object in dancers array
+  //calculate distance between clicked element and element[i] in array
+  //update closest element if necessary
+//make closest element and clicked element do something unique
+$(document).on("click", ".dancer", function(event){
+  var clickedCoordinates = $(event.currentTarget).position();
+  //console.log(clickedCoordinates.top);
+  //var newStyleSettings = {top:100, left:100};
+  //$(event.currentTarget).css(newStyleSettings);
+
+  var shortestIndex;
+
+  var distanceFinder = function(xarg, yarg){
+    var dist = Math.sqrt(xarg * xarg + yarg * yarg);
+    if (dist < shortestDistance){
+      shortestDistance = dist;
+      shortestIndex = i;
+    }
+  }
+
+  for (var i =0; i < window.dancers.length; i++){
+    var otherCoordinates = window.dancers[i].$node.position();
+    var xDiff = otherCoordinates.left - clickedCoordinates.left;
+    var yDiff = otherCoordinates.top - clickedCoordinates.top;
+    var shortestDistance = 10000000000000000;
+
+    if (xDiff === 0 && yDiff === 0){
+      continue;
+    } else {
+    distanceFinder(xDiff, yDiff);
+    }
+
+    //console.log(window.dancers[i].$node.position());
+
+  }
+  console.log(shortestIndex);
+  var dancingPartnerPosition = window.dancers[shortestIndex].$node.position();
+  $(event.currentTarget).animate({"top": ""+dancingPartnerPosition.top, "left": ""+dancingPartnerPosition.left}, "slow");
+  window.dancers[shortestIndex].$node.animate({"top": ""+clickedCoordinates.top, "left": ""+clickedCoordinates.left}, "slow")
+
+
+
+
+});
+
+
+
+//ELEMENT EVENT HANDLERS
+  /*
+  $(document).on("mouseover", ".grandpa", function(event){
+    $(event.currentTarget).removeClass("infinite flip");
+    $(event.currentTarget).addClass("infinite wobble");
+
+  });
+
+  $(document).on("mouseover", ".beyonce", function(event){
+    $(event.currentTarget).removeClass("infinite bounce");
+    $(event.currentTarget).addClass("hinge");
+
+  });
+*/
+  /*$(document).on("mouseover", ".baby", function(event){
+    //console.log("click works!")
+    $(event.currentTarget).removeClass("bounceInDown");
+    $(event.currentTarget).addClass("lightSpeedOut");
+  });*/
+
+
+//BUTTON EVENT HANDLERS
+  $(".lineUpDancers").on("click", function(event){
+    //iterate over window.dancers array
+    for ( var i = 0; i < window.dancers.length; i++ ){
+      dancers[i].top = $("body").height() / 2;
+      dancers[i].setPosition(window.dancers[i].top, window.dancers[i].left);
+    }
+      //for each dancer object, set the position to a set x or y position.
+      //window.dancers[0]
+
+  });
+
   $(".addDancerButton").on("click", function(event){
 
 
@@ -29,6 +114,7 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
 });
